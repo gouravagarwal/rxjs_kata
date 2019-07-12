@@ -5,29 +5,34 @@ import { Observable, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FeatureRequestService {  
-  
+export class FeatureRequestService {
+  public featRequest: FeatureRequest = new FeatureRequest(null,null,null,null);
+  public newRequestSubject$: Subject<FeatureRequest> = new Subject<FeatureRequest>();
+  public newRequestBehaviourSubject$: BehaviorSubject<FeatureRequest> = new BehaviorSubject<FeatureRequest>(this.featRequest);
+
   constructor() { }
 
-  newRequest(feature:FeatureRequest) {
-    
+  newRequest(feature: FeatureRequest) {
+    this.newRequestSubject$.next(feature);
   }
 
-  newRequests(features:FeatureRequest[]){
-    
-  }
-  
-  getSubscribableNewRequests():Observable<FeatureRequest> {    
-    return undefined;
+  newRequests(features: FeatureRequest[]) {
+    features.forEach(x => {
+      this.newRequestBehaviourSubject$.next(x);
+    });
   }
 
-  getSubscribableWithLatestItem():Observable<FeatureRequest> {
-    return undefined;
-  }  
+  getSubscribableNewRequests(): Observable<FeatureRequest> {
+    return this.newRequestSubject$;
+  }
+
+  getSubscribableWithLatestItem(): Observable<FeatureRequest> {
+    return this.newRequestBehaviourSubject$;
+  }
 
   getSubscribableWithLastThree():Observable<FeatureRequest> {
     return undefined;
   }
-  
+
 
 }
