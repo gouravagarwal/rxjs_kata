@@ -9,6 +9,7 @@ export class FeatureRequestService {
   public featRequest: FeatureRequest = new FeatureRequest(null,null,null,null);
   public newRequestSubject$: Subject<FeatureRequest> = new Subject<FeatureRequest>();
   public newRequestBehaviourSubject$: BehaviorSubject<FeatureRequest> = new BehaviorSubject<FeatureRequest>(this.featRequest);
+  public newRequestReplayBehaviourSubject$: ReplaySubject<FeatureRequest> = new ReplaySubject<FeatureRequest>(3);
 
   constructor() { }
 
@@ -31,7 +32,7 @@ export class FeatureRequestService {
   }
 
   getSubscribableWithLastThree():Observable<FeatureRequest> {
-    return undefined;
+    return this.newRequestReplayBehaviourSubject$;
   }
 
 
