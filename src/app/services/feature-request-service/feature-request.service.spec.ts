@@ -32,6 +32,7 @@ describe('FeatureRequestService', () => {
     expect(service).toBeTruthy();
   });
 
+  //kata test 1
   //(Solution: operator is 'from')
   it('should NOT USE THE SERVICE and use some rxjs operator to create an observable that emits a single value for each feature element in an array', async(() => {
 
@@ -43,6 +44,7 @@ describe('FeatureRequestService', () => {
     });
   }));
 
+  //kata test 2
   //(Solution: operator is 'of- creates observable stream and then map combines to create an array')
   it('should NOT USE THE SERVICE and use some rxjs operator to create an observable that emits an array of values matching the array', async(() => {
 
@@ -52,6 +54,7 @@ describe('FeatureRequestService', () => {
 
   }));
 
+  //kata test 3
   //Subject test
   it('should emit a value when a singular value is passed to the newRequest() method while already observing', () => {
     const service: FeatureRequestService = TestBed.get(FeatureRequestService);
@@ -61,7 +64,7 @@ describe('FeatureRequestService', () => {
     service.newRequest(feat1);
   });
 
-
+  //kata test 4
   //BehaviorSubject test
   it('should emit the last value of an array of requests passed via the newRequests() method', () => {
     const service: FeatureRequestService = TestBed.get(FeatureRequestService);
@@ -71,7 +74,7 @@ describe('FeatureRequestService', () => {
     service.getSubscribableWithLatestItem().subscribe(r => expect(r).toBe(feat4));
   });
 
-
+  //kata test 5
   //Replay Subject Test
   it('should emit the last 3 values that were passed to it via newRequests(), as well as a new singular value passed via newRequest()', () => {
     const service: FeatureRequestService = TestBed.get(FeatureRequestService);
