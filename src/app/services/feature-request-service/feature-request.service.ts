@@ -20,6 +20,7 @@ export class FeatureRequestService {
   newRequests(features: FeatureRequest[]) {
     features.forEach(x => {
       this.newRequestBehaviourSubject$.next(x);
+      this.newRequestReplayBehaviourSubject$.next(x);
     });
   }
 
