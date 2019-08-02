@@ -23,7 +23,7 @@ export class FeatureReportService {
         let t = new FeatureReport(null, null, null);
         t.NumberIssues = x.NumberIssues + y.NumberIssues;
         t.NumberUrgent = x.NumberUrgent + y.NumberUrgent;
-        t.NumberHighComplexity = x.NumberHighComplexity + x.NumberHighComplexity;
+        t.NumberHighComplexity = x.NumberHighComplexity + y.NumberHighComplexity;
         return t;
       })
     );
